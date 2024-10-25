@@ -3,9 +3,13 @@ resource "aws_launch_template" "web_server_as" {
     image_id           = "ami-0ddc798b3f1a5117e"
     instance_type = "t2.micro"
     key_name = "IBACO"
-    
-}
-   
+    network_interfaces {
+      associate_public_ip_address = true
+      security_groups = [
+       aws_security_groups.web_server.id,
+     ]
+   }
+}   
 
 
   resource "aws_elb" "web_server_lb"{
