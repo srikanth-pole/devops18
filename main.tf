@@ -27,7 +27,7 @@ resource "aws_launch_template" "web_server_as" {
     }
   }
 resource "aws_autoscaling_group" "web_server_asg" {
-    name                 = "web-server-asg"
+    name                 = "web_server_asg"
     min_size             = 1
     max_size             = 3
     desired_capacity     = 2
@@ -35,7 +35,7 @@ resource "aws_autoscaling_group" "web_server_asg" {
     load_balancers       = [aws_elb.web_server_lb.name]
     availability_zones    = ["us-east-1a", "us-east-1b"] 
     launch_template {
-        id      = aws_launch_template.web_server.id
+        id      = aws_launch_template.web_server_as.id
         version = "$Latest"
       }
     
