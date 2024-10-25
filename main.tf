@@ -6,7 +6,7 @@ resource "aws_launch_template" "web_server_as" {
     network_interfaces {
       associate_public_ip_address = true
       security_groups = [
-       aws_security_groups.web_server_as.id,
+       aws_security_groups.web_server.id,
      ]
    }
 }   
@@ -14,7 +14,7 @@ resource "aws_launch_template" "web_server_as" {
 
   resource "aws_elb" "web_server_lb"{
      name = "web-server-lb"
-     security_groups = [aws_security_group.web_server_as.id]
+     security_groups = [aws_security_group.web_server.id]
      subnets = ["subnet-0d9797a807e5ac77a", "subnet-04b66c733c2de751d"]
      listener {
       instance_port     = 8000
