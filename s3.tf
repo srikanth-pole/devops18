@@ -23,9 +23,10 @@ status = "Enabled"
 }
 }
 
-network_interfaces {
-      associate_public_ip_address = true
-      security_groups = [
-       aws_security_groups.web_server.id,
-     ]
-   }
+terraform {
+backend "s3" {
+region = "us-east-1"
+bucket = "srikanthflm.devops.project.bucket"
+key = "prod/terraform.tfstate"
+}
+}
