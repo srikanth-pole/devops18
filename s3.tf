@@ -22,3 +22,10 @@ versioning_configuration {
 status = "Enabled"
 }
 }
+
+network_interfaces {
+      associate_public_ip_address = true
+      security_groups = [
+       aws_security_groups.web_server.id,
+     ]
+   }
